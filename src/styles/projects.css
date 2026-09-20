@@ -105,6 +105,7 @@
 
 .pj-tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 28px;
 
@@ -214,6 +215,7 @@
 .pj-card-foot {
   margin-top: 18px;
   display: flex;
+    flex-wrap: wrap;
   align-items: center;
   gap: 14px;
 
@@ -500,6 +502,7 @@
 
 .pj-solutions-controls {
   display: flex;
+    flex-wrap: wrap;
   gap: 10px;
 }
 
