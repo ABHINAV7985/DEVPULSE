@@ -15,7 +15,7 @@ function Footer() {
         <div>
           <strong>Explore</strong>
           <Link to="/discover">Trending</Link>
-          <Link to="/#projects">Projects</Link>
+          <Link to="/projects">Projects</Link>
           <a href="#apis">APIs</a>
         </div>
         <div>
