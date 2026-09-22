@@ -1,4 +1,12 @@
 import { Link } from "react-router-dom";
+import {
+  TrendingLogo,
+  ProjectsLogo,
+  ApiLogo,
+  GithubLogo,
+  LearnLogo,
+  NewToolsLogo,
+} from "../components/icons/FeatureLogos";
 
 function Home() {
   return (
