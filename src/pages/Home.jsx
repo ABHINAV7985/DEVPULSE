@@ -134,13 +134,13 @@ function Home() {
         <div className="section-label">BUILT FOR DEVELOPERS</div>
         <h2>One place.<br />Infinite things to discover.</h2>
 
-        <div className="feature-grid">
-          <FeatureCard number="01" icon="🔥" title="Trending" text="Know what technologies, topics and projects are gaining momentum." to="/discover" />
-          <FeatureCard number="02" icon="🚀" title="Projects" text="Discover interesting projects and open their live deployments directly."to="/projects" />
-          <FeatureCard number="03" icon="🧩" title="APIs" text="Find free, freemium and paid APIs for your next project." />
-          <FeatureCard number="04" icon="⭐" title="GitHub" text="Explore highly rated repositories using domain and tech-stack filters." to="/github" />
-          <FeatureCard number="05" icon="📚" title="Learn" text="Find the best videos, tutorials and resources for modern technologies." />
-          <FeatureCard number="06" icon="✨" title="New Tools" text="Discover newly launched developer tools before they become mainstream." />
+         <div className="feature-grid">
+          <FeatureCard number="01" icon={<TrendingLogo />} title="Trending" text="Know what technologies, topics and projects are gaining momentum." to="/discover" />
+          <FeatureCard number="02" icon={<ProjectsLogo />} title="Projects" text="Discover interesting projects and open their live deployments directly." to="/projects" />
+          <FeatureCard number="03" icon={<ApiLogo />} title="APIs" text="Find free, freemium and paid APIs for your next project." to="/apis" />
+          <FeatureCard number="04" icon={<GithubLogo />} title="GitHub" text="Explore highly rated repositories using domain and tech-stack filters." to="/github" />
+          <FeatureCard number="05" icon={<LearnLogo />} title="Learn" text="Find the best videos, tutorials and resources for modern technologies." />
+          <FeatureCard number="06" icon={<NewToolsLogo />} title="New Tools" text="Discover newly launched developer tools before they become mainstream." />
         </div>
       </section>
 
