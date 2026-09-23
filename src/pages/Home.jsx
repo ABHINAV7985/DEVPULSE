@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   TrendingLogo,
@@ -37,16 +38,7 @@ function Home() {
           </button>
         </div>
 
-        <div className="hero-image-wrapper">
-          <div className="hero-image-placeholder">
-            <div className="placeholder-content">
-              <div className="image-icon">＋</div>
-              <h3>Your Hero Image</h3>
-              <p>Replace this area with your own image, animation, product screenshot or video.</p>
-              <span className="placeholder-label">IMAGE / VIDEO PLACEHOLDER</span>
-            </div>
-          </div>
-        </div>
+        <DevPulseHeroVisual />
       </section>
 
       <section className="discovery-section">
@@ -160,6 +152,178 @@ function Home() {
         <button className="hero-button">Start exploring <span className="arrow">→</span></button>
       </section>
     </main>
+  );
+}
+
+const HERO_VISUALS = [
+  {
+    key: "github",
+    label: "GITHUB",
+    title: "Trending repositories",
+    description: "See what developers are starring, building and using right now.",
+    action: "Explore trending repos",
+    meta: "GitHub signals",
+    accent: "#111827",
+    icon: GithubLogo,
+    items: [
+      ["vercel / next.js", "92.4k stars"],
+      ["microsoft / vscode", "68.1k stars"],
+      ["facebook / react", "240k stars"],
+    ],
+  },
+  {
+    key: "trending",
+    label: "TRENDING TECH",
+    title: "Know what is moving",
+    description: "Spot the frameworks, languages and developer topics gaining momentum.",
+    action: "Explore trends",
+    meta: "Developer pulse",
+    accent: "#2563eb",
+    icon: TrendingLogo,
+    items: [
+      ["React", "Frontend"],
+      ["Python", "AI + Data"],
+      ["TypeScript", "Web"],
+    ],
+  },
+  {
+    key: "apis",
+    label: "APIs",
+    title: "Find an API for your project",
+    description: "Browse useful APIs, see where to get them and filter for free access.",
+    action: "Find free APIs",
+    meta: "Free / Freemium",
+    accent: "#ff6c37",
+    icon: ApiLogo,
+    items: [
+      ["OpenWeather", "Free tier"],
+      ["NASA APIs", "Open data"],
+      ["GitHub API", "Developer API"],
+    ],
+  },
+  {
+    key: "learn",
+    label: "LEARN",
+    title: "Learn by building",
+    description: "Find tutorials, documentation and practical learning paths for your stack.",
+    action: "Start learning",
+    meta: "Guides + Docs",
+    accent: "#0f766e",
+    icon: LearnLogo,
+    items: [
+      ["React", "Build a dashboard"],
+      ["Node.js", "REST API guide"],
+      ["Git", "Team workflow"],
+    ],
+  },
+  {
+    key: "projects",
+    label: "PROJECTS",
+    title: "Get hands-on",
+    description: "Discover projects you can run, study, fork and improve yourself.",
+    action: "Explore projects",
+    meta: "Live + Open source",
+    accent: "#d9485f",
+    icon: ProjectsLogo,
+    items: [
+      ["AI Workspace", "React · Python"],
+      ["URL Shortener", "Node · MongoDB"],
+      ["Dev Dashboard", "Vite · CSS"],
+    ],
+  },
+  {
+    key: "tools",
+    label: "NEW TOOLS",
+    title: "Discover useful developer tools",
+    description: "Find newly launched tools that can speed up your daily development workflow.",
+    action: "Explore new tools",
+    meta: "Fresh discoveries",
+    accent: "#7c3aed",
+    icon: NewToolsLogo,
+    items: [
+      ["AI code tools", "Try it"],
+      ["API clients", "Ship faster"],
+      ["Dev utilities", "Save time"],
+    ],
+  },
+];
+
+function DevPulseHeroVisual() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActive((current) => (current + 1) % HERO_VISUALS.length);
+    }, 3200);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const current = HERO_VISUALS[active];
+  const Logo = current.icon;
+  const previous = HERO_VISUALS[(active - 1 + HERO_VISUALS.length) % HERO_VISUALS.length];
+  const next = HERO_VISUALS[(active + 1) % HERO_VISUALS.length];
+
+  return (
+    <div className="hero-image-wrapper" aria-label="DevPulse discovery animation">
+      <div className="hero-visual-orbit hero-visual-orbit-one"></div>
+      <div className="hero-visual-orbit hero-visual-orbit-two"></div>
+      <span className="hero-visual-dot hero-visual-dot-one"></span>
+      <span className="hero-visual-dot hero-visual-dot-two"></span>
+      <span className="hero-visual-dot hero-visual-dot-three"></span>
+
+      <div className="hero-visual-side-card hero-visual-side-left">
+        <span className="hero-visual-side-label">NEXT</span>
+        <strong>{previous.label}</strong>
+        <small>{previous.action}</small>
+      </div>
+
+      <div className="hero-visual-stage">
+        <div key={current.key} className="hero-visual-card">
+          <div className="hero-visual-card-top">
+            <div className="hero-visual-logo" style={{ color: current.accent }}>
+              <Logo />
+            </div>
+            <div>
+              <span className="hero-visual-kicker">{current.label}</span>
+              <span className="hero-visual-meta">{current.meta}</span>
+            </div>
+            <span className="hero-visual-step">0{active + 1}</span>
+          </div>
+
+          <h3>{current.title}</h3>
+          <p>{current.description}</p>
+
+          <div className="hero-visual-list">
+            {current.items.map(([name, detail]) => (
+              <div className="hero-visual-list-item" key={name}>
+                <span>{name}</span>
+                <small>{detail}</small>
+              </div>
+            ))}
+          </div>
+
+          <div className="hero-visual-card-bottom">
+            <span>{current.action}</span>
+            <span className="hero-visual-arrow">→</span>
+          </div>
+        </div>
+
+        <div className="hero-visual-progress" aria-hidden="true">
+          {HERO_VISUALS.map((item, index) => (
+            <span key={item.key} className={index === active ? "active" : ""}></span>
+          ))}
+        </div>
+      </div>
+
+      <div className="hero-visual-side-card hero-visual-side-right">
+        <span className="hero-visual-side-label">UP NEXT</span>
+        <strong>{next.label}</strong>
+        <small>{next.action}</small>
+      </div>
+
+    
+    </div>
   );
 }
 
