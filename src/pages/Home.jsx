@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import {
   TrendingLogo,
   ProjectsLogo,
@@ -7,6 +5,7 @@ import {
   GithubLogo,
   LearnLogo,
   NewToolsLogo,
+  TechNewsLogo,
 } from "../components/icons/FeatureLogos";
 
 function Home() {
@@ -137,7 +136,7 @@ function Home() {
          <div className="feature-grid">
           <FeatureCard number="01" icon={<TrendingLogo />} title="Trending" text="Know what technologies, topics and projects are gaining momentum." to="/discover" />
           <FeatureCard number="02" icon={<ProjectsLogo />} title="Projects" text="Discover interesting projects and open their live deployments directly." to="/projects" />
-          <FeatureCard number="03" icon={<ApiLogo />} title="APIs" text="Find free, freemium and paid APIs for your next project." to="/apis" />
+          <FeatureCard number="03" icon={<TechNewsLogo />} title="APIs" text="Find free, freemium and paid APIs for your next project." to="/technews" />
           <FeatureCard number="04" icon={<GithubLogo />} title="GitHub" text="Explore highly rated repositories using domain and tech-stack filters." to="/github" />
           <FeatureCard number="05" icon={<LearnLogo />} title="Learn" text="Find the best videos, tutorials and resources for modern technologies." />
           <FeatureCard number="06" icon={<NewToolsLogo />} title="New Tools" text="Discover newly launched developer tools before they become mainstream." />
@@ -187,20 +186,21 @@ const HERO_VISUALS = [
     ],
   },
   {
-    key: "apis",
-    label: "APIs",
-    title: "Find an API for your project",
-    description: "Browse useful APIs, see where to get them and filter for free access.",
-    action: "Find free APIs",
-    meta: "Free / Freemium",
-    accent: "#ff6c37",
-    icon: ApiLogo,
-    items: [
-      ["OpenWeather", "Free tier"],
-      ["NASA APIs", "Open data"],
-      ["GitHub API", "Developer API"],
-    ],
-  },
+  key: "technews",
+  label: "TECH NEWS",
+  title: "Discover news that matters",
+  description:
+    "Search by companies, follow your interests and discover the latest technology stories from across the developer ecosystem.",
+  action: "Explore tech news",
+  meta: "Companies + Interests",
+  accent: "#2563eb",
+  icon: TechNewsLogo,
+  items: [
+    ["Search by Companies", "Microsoft · Google · OpenAI"],
+    ["Your Interests", "AI · Web · Cloud"],
+    ["Trending Stories", "Latest tech updates"],
+  ],
+},
   {
     key: "learn",
     label: "LEARN",
