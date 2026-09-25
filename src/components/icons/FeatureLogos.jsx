@@ -20,7 +20,47 @@ export function TrendingLogo() {
     </svg>
   );
 }
-
+export function TechNewsLogo() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M4 5.5C4 4.67 4.67 4 5.5 4H18.5C19.33 4 20 4.67 20 5.5V18.5C20 19.33 19.33 20 18.5 20H5.5C4.67 20 4 19.33 4 18.5V5.5Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+      />
+      <path
+        d="M7.5 8H16.5"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+      <path
+        d="M7.5 12H13.5"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+      <path
+        d="M7.5 16H11"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+      <circle
+        cx="17"
+        cy="15.5"
+        r="2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
+    </svg>
+  );
+}
 export function ProjectsLogo() {
   return (
     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
