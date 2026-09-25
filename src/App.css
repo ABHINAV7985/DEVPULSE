@@ -1935,7 +1935,6 @@ a {
      "solid" only because every inner route happened to have a dark
      background behind it. Same color either way, but now it stays
      legible on a light page (e.g. TechNews) too. */
-  background: rgba(9, 9, 11, 0.82);
 
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
