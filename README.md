@@ -99,6 +99,66 @@ Ranking is applied on top of the search results:
 `vercel.json` covers Vercel. On other hosts, point the 404 handler at
 `index.html`.
 
+## TechNews
+
+Routes:
+
+- `/technews` — light-theme dashboard with hero search, category filters,
+  company logos, top news, latest news, and the floating trending button
+- `/technews/topic/:topic` — source-grounded topic summary
+- `/technews/article?q=...` — an article-specific summary page reached from
+  a news card or topic coverage item; the original publisher is opened only
+  from the explicit "Read Original Article" button
+
+Everything on this page is fetched from the GNews API rather than fabricated
+content. GNews returns article title, description, content, image, publication
+time, URL, and source metadata. The summary is generated locally from that
+fetched text with a deterministic extractive algorithm, so no AI summary API
+key or paid summarization service is required.
+
+### Setup
+
+For local development, create a `.env.local` file beside `package.json`:
+
+```env
+GNEWS_API_KEY=your_gnews_api_key
+```
+
+Do not create `VITE_GNEWS_API_KEY`: the news provider credential must never be bundled into browser JavaScript. No summarization API key is required.
+
+Run the app with:
+
+```bash
+npm install
+npm run dev
+```
+
+The Vite dev server includes the local `/api/technews` proxy, so you do not need the Vercel CLI just to run TechNews locally.
+
+### Trending
+
+The floating trending button derives its list from the real articles already
+fetched for the feed. Clicking a trending item opens the internal topic page,
+where the latest source coverage is summarized before the original publisher
+link is shown.
+
+### Summaries
+
+The summary flow is source-first:
+
+1. The app keeps the user inside DevPulse instead of immediately opening a
+   publisher site.
+2. The selected article or topic is fetched through the server-side GNews
+   proxy.
+3. DevPulse generates the summary locally from the fetched title/description/content using a deterministic extractive algorithm.
+4. The summary only reuses sentences from fetched source text; it does not call an AI model or invent facts.
+5. The original article is available through the explicit `Read Original Article` action.
+
+The news and summary endpoints also validate request paths/payload sizes, use
+lightweight per-client rate limiting, and keep provider API keys server-side.
+Vercel and Netlify deployments receive baseline security headers through
+`vercel.json` and `public/_headers`.
+
 ## Discover
 
 Route: `/discover` (public — visitors can browse without an account).
@@ -315,3 +375,12 @@ message rather than doing nothing silently.
   built-in mailer, which is fine for testing but rate-limited — see
   Supabase's docs on configuring a custom SMTP provider before real
   traffic).
+
+
+## TechNews security
+
+TechNews keeps `GNEWS_API_KEY` on the server only. Do not add `VITE_GNEWS_API_KEY`.
+
+The frontend calls `/api/technews` for live source data, while the summary is generated locally from that fetched source text. No paid AI provider is contacted for summarization.
+
+For local development, `npm run dev` is enough for the free summarizer; use `vercel dev` when you also want to exercise the serverless news proxy.

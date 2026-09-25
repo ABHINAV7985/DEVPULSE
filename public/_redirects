@@ -1,2 +1,4 @@
-/api/github  /.netlify/functions/github  200
-/*           /index.html                 200
+/api/github    /.netlify/functions/github    200
+/api/technews  /.netlify/functions/technews  200
+/api/summarize /.netlify/functions/summarize 200
+/*             /index.html                   200

@@ -13,6 +13,9 @@ import AdminProtectedRoute from "./components/AdminProtectedRoute";
 
 import Home from "./pages/Home";
 import Discover from "./pages/Discover";
+import TechNews from "./pages/TechNews";
+import TechNewsTopic from "./pages/TechNewsTopic";
+import TechNewsArticle from "./pages/TechNewsArticle";
 import Github from "./pages/Github";
 import GithubProject from "./pages/GithubProject";
 import Login from "./pages/Login";
@@ -40,6 +43,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/discover" element={<Discover />} />
+            <Route path="/technews" element={<TechNews />} />
+            <Route path="/technews/topic/:topic" element={<TechNewsTopic />} />
+            <Route path="/technews/article" element={<TechNewsArticle />} />
             <Route path="/login" element={<Login />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:slug" element={<ProjectDetail />} />
