@@ -139,7 +139,7 @@ function Home() {
          <div className="feature-grid">
           <FeatureCard number="01" icon={<TrendingLogo />} title="Trending" text="Know what technologies, topics and projects are gaining momentum." to="/discover" />
           <FeatureCard number="02" icon={<ProjectsLogo />} title="Projects" text="Discover interesting projects and open their live deployments directly." to="/projects" />
-          <FeatureCard number="03" icon={<TechNewsLogo />} title="Tech News" text="Explore technology news by company and interest, then dive into accurate summaries and the original article." to="/tech-news" />
+          <FeatureCard number="03" icon={<TechNewsLogo />} title="Tech News" text="Explore technology news by company and interest, then dive into accurate summaries and the original article." to="/technews" />
           <FeatureCard number="04" icon={<GithubLogo />} title="GitHub" text="Explore highly rated repositories using domain and tech-stack filters." to="/github" />
           <FeatureCard number="05" icon={<LearnLogo />} title="Learn" text="Find the best videos, tutorials and resources for modern technologies." />
           <FeatureCard number="06" icon={<NewToolsLogo />} title="New Tools" text="Discover newly launched developer tools before they become mainstream." />
