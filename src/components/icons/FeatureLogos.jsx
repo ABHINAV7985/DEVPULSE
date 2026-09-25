@@ -176,8 +176,6 @@ export function NewToolsLogo() {
     </svg>
   );
 }
-<<<<<<< HEAD
-=======
 
 // Trending flame — used by the TechNews floating trending button.
 // A proper vector icon (not the 🔥 emoji), monochrome so it inherits
@@ -192,4 +190,3 @@ export function TrendingFlameIcon() {
     </svg>
   );
 }
->>>>>>> c6b996d (Update DevPulse TechNews)
